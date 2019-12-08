@@ -1,0 +1,16 @@
+#toc {
+  position: sticky;
+  top: 80px;
+  font-size: 14px;
+
+  a {
+    color: #999;
+  }
+
+  #TableOfContents {
+    & > ul > li ul {
+      padding-left: 20px;
+      list-style: disc;
+    }
+  }
+}

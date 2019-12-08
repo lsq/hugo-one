@@ -1,0 +1,33 @@
+// mixins
+
+@mixin media-until($breakpoint) {
+  $width: map-get($breakpoints, $breakpoint);
+  @media screen and (max-width: $width - 1px) {
+    @content;
+  }
+}
+
+@mixin media($breakpoint) {
+  $width: map-get($breakpoints, $breakpoint);
+  @media screen and (min-width: $width) {
+    @content;
+  }
+}
+
+%responsive-img {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+%text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+%vio-dashed-border {
+  border-bottom: 1px dashed #f0f0f0;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+}

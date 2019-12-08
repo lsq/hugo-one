@@ -1,0 +1,18 @@
+.no-found {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .no-found-title {
+    i {
+      font-size: 220px;
+    }
+  }
+
+  .go-home-link {
+    font-size: 14px;
+    color: $theme-color;
+  }
+}

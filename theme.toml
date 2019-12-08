@@ -1,0 +1,12 @@
+name = "Hugo One"
+license = "MIT"
+licenselink = "https://github.com/4ever9/hugo-one/blob/master/LICENSE.md"
+description = "An responsive light & clean hugo theme"
+homepage = "https://github.com/4ever9/hugo-one"
+tags = ["Series", "Responsive", "Lightweight"]
+features = ["Blog", "Series", "Tags"]
+min_version = 0.50
+
+[author]
+  name = "4ever9"
+  homepage = "https://4ever9.github.io/one"

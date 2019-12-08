@@ -1,0 +1,20 @@
+$theme-color: #00ab6b;
+
+// grid system
+$breakpoints: () !default;
+$breakpoints: map-merge(
+    (
+      xs: 0,
+      sm: 604px,
+      md: 784px,
+      lg: 1024px,
+      xl: 1204px
+    ),
+    $breakpoints
+);
+
+// cherry variables
+$grid-gutter: 30px;
+
+$navbar-item-hover-color: $theme-color;
+$navbar-item-active-color: $theme-color;

@@ -1,0 +1,10 @@
+<div class="post post-card">
+  {{ partial "cover.html" . }}
+  {{ partial "meta.html" . }}
+  <a class="vio-title post-title h5" href="{{ .Permalink }}">
+    {{ .Title }}
+  </a>
+  <div class="vio-desc post-desc">
+    {{ partial "summary.html" . }}
+  </div>
+</div>

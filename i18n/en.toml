@@ -1,0 +1,41 @@
+[title_series]
+other = "Recommend Series"
+
+[title_posts]
+other = "Posts"
+
+[title_related]
+other = "Reloated Posts"
+
+[title_related_series]
+other = "Related Series"
+
+[title_comment]
+other = "Comments"
+
+[categories]
+other = "Categories"
+
+[tags]
+other = "Tags"
+
+[series]
+other = "Series"
+
+[catalog]
+other = "Catalog"
+
+[previous_page]
+other = "Previous"
+
+[next_page]
+other = "Next"
+
+[go_home]
+other = "Go home"
+
+[title_search]
+other = "search"
+
+[series_count]
+other = "{{ .Count }} posts"

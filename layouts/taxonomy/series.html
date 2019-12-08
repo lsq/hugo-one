@@ -1,0 +1,67 @@
+{{ partial "header.html" . }}
+
+{{ $title := .Title | urlize }}
+{{ $data := $.Site.Data.series.series }}
+{{ range $data }}
+  {{ $name := .name | urlize }}
+  {{ if eq $name $title }}
+    {{ $.Scratch.Set "img" .img }}
+    {{ $.Scratch.Set "desc" .desc }}
+  {{ end }}
+{{ end }}
+
+<section class="series-header">
+  <div class="container">
+    <div class="row series-header-row">
+      <div class="col-md-7">
+        <h3 class="series-title">
+          {{ .Title }}
+        </h3>
+        <div class="series-desc">
+          {{ $.Scratch.Get "desc" }}
+        </div>
+        <div class="series-meta">
+          <i class="icon icon-category"></i>
+          {{ i18n "series_count" (len .Data.Pages) }}
+        </div>
+      </div>
+      <div class="col-md-5">
+        <img class="series-img" alt="series-img" src="{{ $.Scratch.Get "img" }}">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 series-content">
+      {{ range $k, $v := .Data.Pages }}
+        <div class="series-item media">
+          <div class="media-left">
+            <div class="series-number">
+              {{ printf "%02d" (add $k 1) }}
+            </div>
+          </div>
+          <div class="media-content">
+            <div class="post series-body">
+              <div class="post-meta">
+                <div class="post-date">
+                  {{ .Date.Format "Jan 2, 2006" }}
+                </div>
+              </div>
+              <a href="{{ .Permalink }}" class="h5 vio-title">
+                {{ .Title }}
+              </a>
+              <div class="vio-desc series-desc">
+                {{ partial "summary.html" . }}
+              </div>
+            </div>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</div>
+
+
+{{ partial "footer.html" . }}

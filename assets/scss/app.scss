@@ -1,0 +1,91 @@
+// cherry
+@import "variables";
+@import "muse/src/muse.scss";
+@import "mixin";
+@import "header";
+@import "taxonomy";
+@import "footer";
+@import "font";
+@import "post";
+@import "series";
+@import "single";
+@import "toc";
+@import "pagination";
+@import "404";
+
+body {
+  padding-top: 60px;
+}
+
+#main {
+  padding-top: 60px;
+  min-height: 85vh;
+  @include media-until(md) {
+    padding-top: 30px;
+  }
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: 'Roboto Slab', 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+.separator {
+  @extend %vio-dashed-border;
+}
+
+.icon {
+  margin-right: 5px;
+}
+
+.vio-title {
+  display: block;
+  margin-bottom: .5rem;
+  color: #000;
+}
+
+.vio-meta {
+  display: flex;
+  font-size: 12px;
+  color: #999;
+  margin-bottom: .2rem;
+
+  .vio-categories {
+    margin-left: auto;
+    font-weight: bold;
+  }
+
+  .vio-category {
+    color: $theme-color;
+    position: relative;
+  }
+
+}
+
+.vio-desc {
+  color: #999;
+  font-size: 13px;
+}
+
+.media-content {
+  min-width: 0;
+}
+
+#search-content {
+  min-height: 600px;
+
+  .ais-hits--item {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #f0f0f0;
+  }
+
+  .search-hit-item {
+    color: #999;
+
+    em {
+      font-style: normal;
+      color: #ff0000
+    }
+  }
+}

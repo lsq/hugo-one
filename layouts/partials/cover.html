@@ -1,0 +1,5 @@
+{{ $cover := .Site.Params.default_cover | default (resources.Get "images/cover.png").Permalink }}
+{{ if isset .Params "cover" }}
+  {{ $cover = .Params.cover }}
+{{ end }}
+<div class="post-img" style="background-image: url({{ $cover }})"></div>

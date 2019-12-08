@@ -1,0 +1,67 @@
+{{ partial "header.html" . }}
+
+{{ $type := .Type }}
+{{ $firstTaxonomy := "" }}
+{{ $colors := shuffle (slice "primary" "info" "success" "warning" "danger") }}
+<div id="main" class="taxonomies">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <ul class="taxonomies-items">
+          <h5>
+            {{ if eq $type "categories" }}
+              <i class="icon icon-category"></i>
+            {{ else }}
+              <i class="icon icon-tag"></i>
+            {{ end }}
+            {{ i18n $type }}
+            <span class="taxonomies-count">
+              ({{ len .Data.Terms }})
+            </span>
+          </h5>
+          {{ range $k, $v := .Data.Terms.ByCount }}
+            {{ if eq $k 0 }}
+              {{ $firstTaxonomy = .Name }}
+            {{ end }}
+            <li class="taxonomies-item {{ if eq $k 0}} active {{ end }}">
+              <a href="/{{ $type }}/{{ .Name }}">
+                <i class="icon icon-circle text-{{ index $colors (mod $k 5) }}" style="font-size: 12px;"></i>
+                {{.Name}}
+                <span class="taxonomies-count">
+                  {{ .Count }}
+                </span>
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+      <div class="col-md-9">
+        <div class="taxonomies-content">
+          {{ range $name, $t := .Site.Taxonomies }}
+            {{ if eq $name $type }}
+              {{ range $k, $v := $t }}
+                {{ if eq $k $firstTaxonomy }}
+                  <div class="taxonomy">
+                    <h4 class="taxonomy-title">{{ $k}}</h4>
+                    {{ range $v.Pages }}
+                      <a href="{{ .Permalink }}" class="taxonomy-item">
+                        <div class="vio-meta">
+                          {{ .Date.Format "Jan 2, 2006" }}
+                        </div>
+                        {{.Title}}
+                      </a>
+                    {{ end }}
+                  </div>
+                {{ end }}
+              {{ end }}
+            {{ end }}
+          {{end}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ partial "footer.html" . }}
+
+

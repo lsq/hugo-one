@@ -1,0 +1,19 @@
+{{ $related := .Site.RegularPages.Related . | first 2 }}
+{{ if gt (len $related) 0 }}
+  <div class="single-related">
+    <div class="row">
+      <div class="col-12">
+        <h4>
+          <i class="icon icon-post font-4"></i>
+          {{ i18n "title_related" }}
+        </h4>
+      </div>
+      {{ range $related }}
+        <div class="col-md-6">
+          {{ partial "post-card.html" . }}
+        </div>
+      {{ end }}
+    </div>
+  </div>
+  <div class="separator"></div>
+{{ end }}

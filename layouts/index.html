@@ -1,0 +1,65 @@
+{{ partial "header.html" . }}
+
+<section id="main">
+  <div class="container">
+    <div class="series">
+      <div class="row">
+        <div class="col-12">
+          <h4>
+            <i class="icon icon-category font-4"></i>
+              {{ i18n "title_series" }}
+          </h4>
+        </div>
+          {{ partial "series.html" . }}
+      </div>
+    </div>
+  </div>
+
+  <div class="posts">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h4>
+            <i class="icon icon-post font-4"></i>
+              {{ i18n "title_posts" }}
+          </h4>
+        </div>
+          {{ $paginator := .Paginate .Site.RegularPages }}
+          {{ range $k, $v := $paginator.Pages.ByDate.Reverse }}
+              {{ if eq $k 3 }}
+                <div class="col-12">
+                  <div class="separator"></div>
+                </div>
+              {{ end }}
+              {{ if lt $k 3 }}
+                <div class="col-md-4 sticky-post">
+                    {{ partial "post-card" . }}
+                </div>
+              {{ else }}
+                <div class="col-md-12">
+                    {{ partial "post-list" . }}
+                </div>
+              {{ end }}
+          {{ end }}
+        <div class="col-12">
+          <div class="pagination">
+              {{ if gt $paginator.TotalPages 1 }}
+                  {{ if $paginator.HasPrev }}
+                    <a class="pagination-previous btn" href="{{ $paginator.Prev.URL }}">
+                        {{ i18n "previous_page" }}
+                    </a>
+                  {{ end }}
+                  {{ if $paginator.HasNext }}
+                    <a class="pagination-next btn" href="{{ $paginator.Next.URL }}">
+                        {{ i18n "next_page" }}
+                    </a>
+                  {{ end }}
+              {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ partial "footer.html" . }}

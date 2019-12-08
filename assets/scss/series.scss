@@ -1,0 +1,134 @@
+.series {
+  @extend %vio-dashed-border;
+
+  .series-item {
+    background-color: #f6f6f6;
+    border-radius: 8px;
+    padding: 20px;
+    height: 220px;
+    @extend %responsive-img;
+
+    &:not(last-child) {
+      margin-bottom: 20px;
+    }
+  }
+
+  .series-img {
+    width: 168px;
+    height: 168px;
+    @include media-until(lg) {
+      width: 108px;
+      height: 108px;
+    }
+  }
+}
+
+.series-header-row {
+  @include media-until(md) {
+    flex-direction: column-reverse;
+  }
+}
+
+.series-header {
+  padding: 80px 0;
+  background-image: linear-gradient(180deg, #21c8f6, #637bff);
+  color: #fff;
+
+  @include media-until(md) {
+    padding: 40px 0;
+  }
+
+  .series-title {
+    @include media-until(md) {
+      text-align: center;
+    }
+  }
+
+  .series-desc {
+    margin-bottom: 20px;
+    font-size: 15px;
+    line-height: 30px;
+    @include media-until(md) {
+      //display: none;
+    }
+  }
+
+  .series-img {
+    width: 188px;
+    height: 188px;
+    margin: 10px auto;
+  }
+
+  .series-meta {
+    font-size: 14px;
+    @include media-until(md) {
+      text-align: center;
+    }
+  }
+}
+
+.series-content {
+  padding-top: 60px !important;
+
+  .series-desc {
+    @extend %text-truncate;
+  }
+
+  .series-item {
+    position: relative;
+
+    &:after {
+      width: 6px;
+      background: #e5e5e5;
+      content: "";
+      display: block;
+      height: 100%;
+      left: 42px;
+      position: absolute;
+      margin-top: 5px;
+      z-index: -1;
+      @include media-until(md) {
+        left: 28px;
+      }
+    }
+  }
+
+  .series-body {
+    padding-bottom: 45px;
+    margin-bottom: 45px;
+    @extend %vio-dashed-border;
+  }
+
+  .series-number {
+    border: 13px solid #fff;
+    background-color: #e5e5e5;
+    margin-right: 40px;
+    box-shadow: 0 0 0 6px #e5e5e5;
+    border-radius: 100%;
+    text-align: center;
+    width: 88px;
+    height: 88px;
+    line-height: 60px;
+    font-size: 24px;
+    @include media-until(md) {
+      width: 60px;
+      height: 60px;
+      line-height: 36px;
+      font-size: 16px;
+      margin-right: auto;
+      margin-top: 10px;
+    }
+  }
+}
+
+.series-terms {
+  padding-top: 60px;
+
+  .series-terms-desc {
+    margin-bottom: 40px;
+    span {
+      color: #999;
+    }
+  }
+
+}

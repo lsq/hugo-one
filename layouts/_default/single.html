@@ -1,0 +1,37 @@
+{{ partial "header.html" . }}
+
+<div class="container" id="main">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="single series">
+        <h1 class="single-title">{{ .Title }}</h1>
+        {{ partial "meta.html" . }}
+        <div class="separator"></div>
+        <div class="single-content">
+          {{ .Content }}
+        </div>
+        {{ if .Params.tags }}
+          <div class="single-tags">
+            {{ range $k, $v := .Params.tags }}
+              <a class="single-tag" href="{{ "tags/" | absLangURL }}{{ . }}">
+                #{{ . }}
+              </a>
+            {{ end }}
+          </div>
+        {{ end }}
+        <div class="separator"></div>
+        {{ partial "single/series.html" . }}
+        {{ partial "single/related.html" . }}
+        {{ partial "single/comment.html" . }}
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div id="toc">
+        <h6>{{ i18n "catalog" }}</h6>
+        {{ .TableOfContents }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ partial "footer.html" . }}

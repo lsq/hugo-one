@@ -1,0 +1,45 @@
+.sticky-post {
+  @include media-until(md) {
+    margin-bottom: 15px;
+  }
+}
+
+.post {
+  display: block;
+  color: #000;
+
+  .post-img {
+    @extend %responsive-img;
+    height: 0;
+    padding-bottom: 60%;
+    border-radius: 6px;
+  }
+}
+
+.post-card {
+  .post-title {
+    @extend %text-truncate;
+  }
+
+  .post-img {
+    margin-bottom: 10px;
+  }
+
+  .post-desc {
+    @extend %text-truncate;
+  }
+
+}
+
+.post-list {
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  @extend %vio-dashed-border;
+
+  .post-img {
+    width: 188px;
+    @include media-until(sm) {
+      width: 128px;
+    }
+  }
+}

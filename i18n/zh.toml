@@ -1,0 +1,41 @@
+[title_series]
+other = "推荐系列"
+
+[title_posts]
+other = "文章列表"
+
+[title_related]
+other = "相关文章"
+
+[title_related_series]
+other = "相关系列"
+
+[title_comment]
+other = "评论"
+
+[categories]
+other = "分类"
+
+[tags]
+other = "标签"
+
+[series]
+other = "系列"
+
+[catalog]
+other = "目录"
+
+[previous_page]
+other = "上一页"
+
+[next_page]
+other = "下一页"
+
+[go_home]
+other = "回首页"
+
+[title_search]
+other = "搜索"
+
+[series_count]
+other = "共{{ .Count }}篇"

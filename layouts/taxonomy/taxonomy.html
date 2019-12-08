@@ -1,0 +1,69 @@
+{{ partial "header.html" . }}
+
+{{ $type := .Type }}
+{{ $name := .Name | urlize }}
+{{ $taxonomies := "" }}
+{{ $colors := shuffle (slice "primary" "info" "success" "warning" "danger") }}
+
+{{ range $name, $t := .Site.Taxonomies }}
+  {{ if eq $name $type }}
+    {{ $taxonomies = $t }}
+  {{ end }}
+{{ end }}
+
+<div id="main" class="taxonomies">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <ul class="taxonomies-items">
+          <h5>
+            {{ if eq $type "categories" }}
+              <i class="icon icon-category"></i>
+              {{ $type }}
+              <span class="taxonomies-count">
+                  ({{ len $taxonomies }})
+                </span>
+            {{ else }}
+              <i class="icon icon-tag"></i>
+              {{ $type }}
+              <span class="taxonomies-count">
+                  ({{ len $taxonomies }})
+                </span>
+            {{ end }}
+          </h5>
+          {{ $idx := 0 }}
+          {{ range $k, $v := $taxonomies }}
+            <li class="taxonomies-item {{ if eq $k $name }} active {{ end }}">
+              <a href="/{{ $type }}/{{ $k }}">
+                <i class="icon icon-circle text-{{ index $colors (mod $idx 5) }}" style="font-size: 12px;"></i>
+                {{ $k }}
+                <span class="taxonomies-count">
+                  {{ len $v.Pages }}
+                </span>
+              </a>
+            </li>
+            {{ $idx = (add $idx 1) }}
+          {{ end }}
+        </ul>
+      </div>
+      <div class="col-md-9">
+        <div class="taxonomies-content">
+          <div class="taxonomy">
+            <h4 class="taxonomy-title">{{ .Title }}</h4>
+            {{ range .Pages }}
+              <a href="{{ .Permalink }}" class="taxonomy-item">
+                <div class="vio-meta">
+                  {{ .Date.Format "Jan 2, 2006" }}
+                </div>
+                {{.Title}}
+              </a>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{{ partial "footer.html" . }}

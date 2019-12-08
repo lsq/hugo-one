@@ -1,0 +1,13 @@
+<div class="post post-list">
+  <div class="media">
+    <div class="media-left">
+      {{ partial "cover.html" . }}
+    </div>
+    <div class="media-content">
+      {{ partial "meta.html" . }}
+      <a class="vio-title h5" href="{{ .Permalink }}">
+        {{ .Title }}
+      </a>
+    </div>
+  </div>
+</div>

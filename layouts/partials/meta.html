@@ -1,0 +1,17 @@
+<div class="vio-meta">
+  <div class="vio-date">
+    {{ .Date.Format "Jan 2, 2006" }}
+  </div>
+  {{ if .Params.categories }}
+    <div class="vio-categories">
+      {{ range $k, $v := .Params.categories }}
+        {{ if ne $k 0 }}
+          /
+        {{ end }}
+        <a class="vio-category" href="{{ "categories/" | absLangURL }}{{ . }}">
+          {{ . }}
+        </a>
+      {{ end }}
+    </div>
+  {{ end }}
+</div>

@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Site.Title }}</title>
+  <link rel="icon" type="image/png" href="{{ (resources.Get "images/favicon.png").Permalink }}">
+  <link href="//at.alicdn.com/t/font_1022901_2zjuy2ajfyt.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/Swiper/4.4.6/css/swiper.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  {{ $options := (dict "targetPath" "assets/style.css" "outputStyle" "compressed" "enableSourceMap" true) }}
+  {{ $scss := resources.Get "scss/app.scss" }}
+  {{ $style := $scss | resources.ToCSS $options}}
+  <link href="{{ $style.RelPermalink }}" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-top" id="navbar">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+          {{ $logo := .Site.Params.logo | default (resources.Get "images/logo.png").Permalink }}
+          <img class="logo" src="{{ $logo }}" width="42" height="42" alt="logo">
+      </a>
+      <div class="navbar-burger" id="navbar-burger">
+        <span></span> <span></span> <span></span>
+      </div>
+    </div>
+    <div class="navbar-menu" id="navbar-menu">
+      <div class="navbar-start">
+        {{ $type := .Type }}
+        {{ range .Site.Menus.main }}
+          <a href="{{ .URL | absURL }}"
+             class="navbar-item {{ if eq $type (trim .URL "/") }}active{{ end }}">
+            {{ .Pre }}
+            {{ .Name }}
+          </a>
+        {{ end }}
+      </div>
+      <div class="navbar-end">
+        {{ if .Site.Params.search }}
+          <div class="navbar-item btn-search" data-target="#modal-search">
+            <i class="icon icon-search"></i>
+            {{ i18n "title_search" }}
+          </div>
+        {{ end }}
+        <div class="modal" id="modal-search">
+          <div class="modal-content">
+            <header class="modal-header" style="padding-right: 40px">
+              <div class="form-group" style="margin-bottom: 0">
+                <div class="form-field form-icon-left">
+                  <input type="search" class="form-control" placeholder="{{ i18n "title_search" }}" id="search">
+                  <i class="icon icon-search form-icon"></i>
+                </div>
+              </div>
+              <div class="modal-close">×</div>
+            </header>
+            <section class="modal-body" id="search-content"></section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

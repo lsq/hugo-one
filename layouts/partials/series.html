@@ -1,0 +1,39 @@
+{{ $data := $.Site.Data.series.series }}
+{{ $count := 100 }}
+{{ if eq .Kind "home" }}
+    {{ $count = 2 }}
+{{ end }}
+
+{{ with .Site.Taxonomies.series }}
+    {{ range first $count .ByCount }}
+        {{ $url := add ("/series/" | absLangURL) (.Name | urlize) }}
+        {{ $name := .Name | urlize }}
+        {{ range $k, $v := $data }}
+            {{ if eq ($v.name | urlize) $name }}
+                {{ $.Scratch.Set "name" $v.name }}
+                {{ $.Scratch.Set "desc" $v.desc }}
+                {{ $.Scratch.Set "img" $v.img }}
+            {{ end }}
+        {{ end }}
+
+        <div class="col-md-6">
+          <div class="series-item">
+            <div class="media">
+              <div class="media-content">
+                <a class="vio-title h4" href="{{ $url }}/">
+                    {{ $.Scratch.Get "name" }} ({{ .Count }})
+                </a>
+                <div class="vio-desc">
+                    {{ $.Scratch.Get "desc" }}
+                </div>
+              </div>
+              <div class="media-right">
+                <figure class="image series-img image-rounded image-responsive">
+                  <img src="{{ $.Scratch.Get "img" }}" alt="series-img">
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+    {{ end }}
+{{ end }}

@@ -1,0 +1,33 @@
+{{ $data := $.Site.Data.series.series }}
+{{ $series := .Params.series }}
+{{ if $series }}
+  <div class="col-12">
+    <h4>
+      <i class="icon icon-post font-4"></i>
+      {{ i18n "title_related_series" }}
+    </h4>
+  </div>
+  {{ range $idx, $s := $series }}
+    {{ range $k, $v := $data }}
+      {{ if eq $v.name $s }}
+        {{ $url := add ("series/" | absLangURL) ($v.name | urlize) }}
+        <div class="series-item">
+          <div class="media">
+            <div class="media-content">
+              <a class="vio-title h4" href="{{ $url }}">
+                {{ $v.name }}
+              </a>
+              <div class="vio-desc">
+                {{ $v.desc }}
+              </div>
+            </div>
+            <div class="media-right">
+              <img class="series-img" src="{{ $v.img }}" alt="serial-item">
+            </div>
+          </div>
+        </div>
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  <div class="separator"></div>
+{{ end }}
