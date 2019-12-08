@@ -1,0 +1,3 @@
+[submodule "assets/scss/muse"]
+	path = assets/scss/muse
+	url = https://github.com/lsq/muse.git
